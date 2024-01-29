@@ -1,0 +1,11 @@
+# Ignore NodeModules
+node_modules
+
+#ignore as pastas de arquivos
+ZonasKMLeGeoJson
+
+#ignore o arquivos excel
+*.xlsx
+
+#ignore a pasta vsCode
+.vscode
