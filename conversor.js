@@ -1,7 +1,22 @@
 const fs = require('fs');
 
 const archives = [
-  'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'L', 'M', 'O', 'P', 'Q', 'R',
+  'A',
+  'B',
+  'C', 
+  'D', 
+  'E', 
+  'F', 
+  'G', 
+  'H', 
+  'I', 
+  'J', 
+  'L', 
+  'M', 
+  'O', 
+  'P', 
+  'Q', 
+  'R',
 ];
 
 const categories = {
@@ -42,7 +57,9 @@ const categories = {
 
 function readFile() {
   archives.forEach((archive) => {
+
     fs.readFile(`./ZonasGeoJson/ZONA_${archive}.geojson`, 'utf-8', (error, data) => {
+      
       if (error) {
         console.error(`Erro ao ler o arquivo ./ZONA_${archive}.geojson: ${error}`);
         return;
@@ -70,8 +87,10 @@ function readFile() {
       };
 
       zone.features.forEach((feature) => {
+
         const name = feature.properties.name || feature.properties.Name;
         checkNames(name, contadores);
+      
       });
 
       fs.writeFile(
@@ -82,14 +101,19 @@ function readFile() {
           console.log('Os dados foram escritos no arquivo contadores.json');
         }
       );
+    
     });
+ 
   });
 }
 
 function checkNames(name, contadores) {
   const category = categories[name.toUpperCase()];
+
   if (category) {
+
     contadores[category]++;
+ 
   }
 }
 
